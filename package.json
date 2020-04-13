@@ -1,0 +1,32 @@
+{
+	"name": "rest-api-express-vue",
+	"version": "1.0.0",
+	"description": "rest api express example",
+	"main": "app.js",
+	"scripts": {
+		"start": "node app.js",
+		"dev": "nodemon app.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/TimraWork/rest-api-express-vue.git"
+	},
+	"keywords": [
+		"js",
+		"express",
+		"rest",
+		"api"
+	],
+	"author": "Mukhamedjanova Elmira",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/TimraWork/rest-api-express-vue/issues"
+	},
+	"homepage": "https://github.com/TimraWork/rest-api-express-vue#readme",
+	"dependencies": {
+		"express": "^4.17.1"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.3"
+	}
+}
