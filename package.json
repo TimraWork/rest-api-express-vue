@@ -14,6 +14,7 @@
 	"keywords": [
 		"js",
 		"express",
+		"nodemon",
 		"rest",
 		"api"
 	],
