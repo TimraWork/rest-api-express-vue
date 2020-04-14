@@ -9,8 +9,15 @@ new Vue({
 				value: '',
 				id: '',
 			},
-			contacts: [],
+			contacts: [
+				{ id: 1, name: 'Эльмира', value: '3 Августа', marked: false },
+			],
 		};
+	},
+	computed: {
+		canCreate() {
+			return this.form.value.trim() && this.form.name.trim();
+		},
 	},
 	methods: {
 		createContact() {
@@ -22,7 +29,8 @@ new Vue({
 			this.form.name = this.form.value = '';
 		},
 		markContact(id) {
-			console.log('mark = ', id);
+			const contact = this.contacts.find((c) => c.id === id);
+			contact.marked = true;
 		},
 		deleteContact(id) {
 			console.log('delete = ', id);
