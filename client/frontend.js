@@ -7,6 +7,7 @@ new Vue({
 			form: {
 				name: '',
 				value: '',
+				id: '',
 			},
 			contacts: [],
 		};
@@ -15,10 +16,16 @@ new Vue({
 		createContact() {
 			// Деструктуризируем данные при помощи спред оператора
 			const { ...contact } = this.form;
-			// console.log(contact);
-			this.contacts.push(contact);
+			console.log('Date.now() = ', Date.now());
+			this.contacts.push({ ...contact, id: Date.now() });
 			// Очистим поля формы
 			this.form.name = this.form.value = '';
+		},
+		markContact(id) {
+			console.log('mark = ', id);
+		},
+		deleteContact(id) {
+			console.log('delete = ', id);
 		},
 	},
 });
