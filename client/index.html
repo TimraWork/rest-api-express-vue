@@ -42,14 +42,17 @@
 				</div>
 				<button class="btn btn-primary" type="submit">Создать</button>
 			</form>
-			<div class="card mb-3">
-				<div class="card-body">
-					<h5 class="card-title">Name</h5>
-					<p class="card-text">Value</p>
-					<button class="btn btn-primary">Отменить</button>
-					<button class="btn btn-danger">Удалить</button>
+			<div class="contacts__wrap" v-if="contacts" v-cloak>
+				<div class="card mb-3" v-for="contact in contacts">
+					<div class="card-body">
+						<h5 class="card-title">{{ contact.name }}</h5>
+						<p class="card-text">{{ contact.value }}</p>
+						<button class="btn btn-primary">Отменить</button>
+						<button class="btn btn-danger">Удалить</button>
+					</div>
 				</div>
 			</div>
+			<!-- contacts__wrap -->
 		</div>
 	</body>
 </html>

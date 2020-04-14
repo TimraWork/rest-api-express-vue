@@ -8,11 +8,17 @@ new Vue({
 				name: '',
 				value: '',
 			},
+			contacts: [],
 		};
 	},
 	methods: {
 		createContact() {
-			console.log(this.form);
+			// Деструктуризируем данные при помощи спред оператора
+			const { ...contact } = this.form;
+			// console.log(contact);
+			this.contacts.push(contact);
+			// Очистим поля формы
+			this.form.name = this.form.value = '';
 		},
 	},
 });
