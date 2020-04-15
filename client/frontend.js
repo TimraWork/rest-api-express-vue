@@ -34,14 +34,17 @@ new Vue({
 			this.contacts = this.contacts.filter((c) => c.id !== id); // Filter возвращает новый массив, который не  содержит элемента с данным ID
 		},
 	},
+	async mounted() {
+		this.contacts = await request('/api/contacts'); //
+	},
 });
 
-async function request(url, method = '', data = null) {
+async function request(url, method = 'GET', data = null) {
 	try {
 		const headers = {};
 		let body;
 		if (data) {
-			(headers['Conent-type'] = 'application/json'),
+			(headers['Content-Type'] = 'application/json'),
 				(body = JSON.stringify(data));
 		}
 		const response = await fetch(url, {

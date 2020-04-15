@@ -8,6 +8,11 @@ const CONTACTS = [
 	{ id: 3, name: 'Рената', value: '22 Ноября', marked: false },
 ];
 
+// GET
+app.get('/api/contacts', (req, res) => {
+	res.status(200).json(CONTACTS);
+});
+
 app.use(express.static(path.resolve(__dirname, 'client'))); // Делаем папку статической, тк в index.html идет вызов ф-ла frontend.js по ОТНОСИТЕЛЬНОМУ ПУТИ
 app.get('*', (req, res) => {
 	res.sendFile(path.resolve(__dirname, 'client', 'index.html'));
