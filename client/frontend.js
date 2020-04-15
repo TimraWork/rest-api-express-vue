@@ -41,11 +41,16 @@ new Vue({
 			// Очистим поля формы
 			this.form.name = this.form.value = '';
 		},
-		markContact(id) {
+		async markContact(id) {
 			const contact = this.contacts.find((c) => c.id === id); // Находим элемент из массива contacts чтобы отметить его как маркерованный
+			await request(`/api/contacts/${id}`, 'PUT', {
+				...contact,
+				marked: true,
+			});
 			contact.marked = true;
 		},
-		deleteContact(id) {
+		async deleteContact(id) {
+			await request(`/api/contacts/${id}`, 'DELETE');
 			this.contacts = this.contacts.filter((c) => c.id !== id); // Filter возвращает новый массив, который не  содержит элемента с данным ID
 		},
 	},
