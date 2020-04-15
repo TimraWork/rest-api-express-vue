@@ -16,7 +16,7 @@ new Vue({
 			form: {
 				name: '',
 				value: '',
-				id: '',
+				// id: '',
 			},
 			contacts: [],
 		};
@@ -27,11 +27,17 @@ new Vue({
 		},
 	},
 	methods: {
-		createContact() {
+		async createContact() {
 			// Деструктуризируем данные при помощи спред оператора
 			const { ...contact } = this.form;
-			console.log('Date.now() = ', Date.now());
-			this.contacts.push({ ...contact, id: Date.now(), marked: false });
+
+			// Подождать, пока выполнится ф-я request по адресу /api/contacts
+			const response = await request('/api/contacts', 'POST', contact);
+			// console.log('contact = ', contact);
+			// console.log('response = ', response);
+
+			// console.log('Date.now() = ', Date.now());
+			this.contacts.push(response);
 			// Очистим поля формы
 			this.form.name = this.form.value = '';
 		},
