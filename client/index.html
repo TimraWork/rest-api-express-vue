@@ -51,7 +51,10 @@
 					Создать
 				</button>
 			</form>
-			<div class="contacts__wrap" v-if="contacts.length" v-cloak>
+			<div v-if="loading">
+				<loader></loader>
+			</div>
+			<div class="contacts__wrap" v-else-if="contacts.length" v-cloak>
 				<div class="card mb-3" v-for="contact in contacts">
 					<div class="card-body">
 						<h5

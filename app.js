@@ -10,7 +10,9 @@ const CONTACTS = [
 
 // GET
 app.get('/api/contacts', (req, res) => {
-	res.status(200).json(CONTACTS);
+	setTimeout(() => {
+		res.status(200).json(CONTACTS);
+	}, 2000);
 });
 
 app.use(express.static(path.resolve(__dirname, 'client'))); // Делаем папку статической, тк в index.html идет вызов ф-ла frontend.js по ОТНОСИТЕЛЬНОМУ ПУТИ
