@@ -9,11 +9,7 @@ new Vue({
 				value: '',
 				id: '',
 			},
-			contacts: [
-				{ id: 1, name: 'Эльмира', value: '3 Августа', marked: false },
-				{ id: 2, name: 'Тимур', value: '17 Января', marked: false },
-				{ id: 3, name: 'Рената', value: '22 Ноября', marked: false },
-			],
+			contacts: [],
 		};
 	},
 	computed: {
@@ -31,7 +27,7 @@ new Vue({
 			this.form.name = this.form.value = '';
 		},
 		markContact(id) {
-			const contact = this.contacts.find((c) => c.id === id); // Находим элемент contacts чтобы отметить его как маркерованный
+			const contact = this.contacts.find((c) => c.id === id); // Находим элемент из массива contacts чтобы отметить его как маркерованный
 			contact.marked = true;
 		},
 		deleteContact(id) {
@@ -39,3 +35,23 @@ new Vue({
 		},
 	},
 });
+
+async function request(url, method = '', data = null) {
+	try {
+		const headers = {};
+		let body;
+		if (data) {
+			(headers['Conent-type'] = 'application/json'),
+				(body = JSON.stringify(data));
+		}
+		const response = await fetch(url, {
+			method,
+			headers,
+			body,
+		});
+
+		return await response.json();
+	} catch (e) {
+		console.warn('Error', e.message);
+	}
+}
